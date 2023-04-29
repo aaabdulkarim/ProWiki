@@ -1,2 +1,2 @@
 # ProWiki
-Wiki for programmers
+Wiki welches sich in IT spezialisiert
