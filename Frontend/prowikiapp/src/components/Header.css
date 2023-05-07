@@ -1,0 +1,27 @@
+.App{
+    
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+
+#setting{
+ 
+    transition: transform 0.3s ease;
+}
+
+#setting:hover {
+    transform: rotate(90deg);
+}
+
+#user{
+
+    transition: transform 0.3s ease;
+
+}
+
+#user:hover{
+    transform: scale(1.3);
+
+}
