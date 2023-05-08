@@ -1,15 +1,15 @@
-
-// import styles from './App.module.css';
 import Header from "./components/Header";
+import ArticleSearch from "./components/ArticleSearch"
+
+
 function App() {
   return (
     <div class="App">
       <Header />
-      <span uk-icon="icon: check"></span>
-
-      <div>
-        <progress></progress>
-      </div>
+      
+      <ArticleSearch />
+      
+  
 
     </div>
   );
