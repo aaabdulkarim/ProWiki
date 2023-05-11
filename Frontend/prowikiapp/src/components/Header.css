@@ -1,7 +1,8 @@
 
 
 input[type="search"] {
-    width: 7vw; 
+    display: flex;
+    width: 6.5rem; 
     transition: width 0.5s; 
 }   
   
