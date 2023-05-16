@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import ArticleSearch from "./components/ArticleSearch"
+import ArticleSearch from "./components/Articles/ArticleSearch"
 
 
 function App() {

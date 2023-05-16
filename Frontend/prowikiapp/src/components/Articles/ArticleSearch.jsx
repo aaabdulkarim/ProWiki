@@ -10,7 +10,7 @@ function ArticleSearch() {
             <article style="cursor: auto; height: 80vh" aria-busy="true"></article>
         }>
 
-            {/* For each geht durch jeden Article durch und platziert  */}
+            {/* For each geht durch jedes Article durch und platziert  */}
             <For each={articles}>{() =>
                 <div class="grid">
                     <article></article>
@@ -19,8 +19,6 @@ function ArticleSearch() {
 
                 </div>
             }</For>
-        
-
         </Show>
 
 
