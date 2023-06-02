@@ -5,7 +5,6 @@ import ArticleSearch from "./components/Articles/ArticleSearch"
 function App() {
   return (
     <div class="App">
-      <Header />
       
       <ArticleSearch />
       

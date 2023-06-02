@@ -6,7 +6,7 @@ var articles = [2, 1, 3,]
 function ArticleSearch() {
     return (
     <main class="container">
-        <Show when={-2 > 0} fallback={
+        <Show when={2 > 0} fallback={
             <article style="cursor: auto; height: 80vh" aria-busy="true"></article>
         }>
 
