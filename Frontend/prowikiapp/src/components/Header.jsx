@@ -14,7 +14,17 @@ function changeTheme() {
     } else{ htmlTag.setAttribute('data-theme', 'light');}
 }
 
+
+
+
+
 function Header() {
+    const [articles, setArticles] = createStore(null);
+
+    function search() {
+
+    }
+
     return (
         <div>
             <div class="container header">
@@ -22,7 +32,7 @@ function Header() {
                 <nav>
                     <ul>
                         <li>
-                            <input type="search" placeholder="Suchen" />
+                            <input onInput={console.log("NEIN")} type="search" placeholder="Suchen" />
                         </li>
                     </ul>
                     <ul>

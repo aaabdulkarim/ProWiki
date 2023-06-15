@@ -27,11 +27,9 @@ CREATE TABLE articles (
     title VARCHAR(100),
     author_id INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    source_id INTEGER NOT NULL,
     file_path VARCHAR(500),
 
-    FOREIGN KEY (author_id) REFERENCES users(user_id),
-    FOREIGN KEY (source_id) REFERENCES sources(source_id)
+    FOREIGN KEY (author_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE comments(
@@ -54,9 +52,6 @@ VALUES("Bedlinger", "iloveSEW", "bedlinger@student.tgm.ac.at");
 INSERT INTO users(username, user_pw, email) 
 VALUES("MDURST", "iLoveMEDT", "mdurst@student.tgm.ac.at");
 
-
-INSERT INTO articles (title, author_id, source_id, file_path) 
-VALUES("Virtuelle Maschine installieren", 1, "Benjamin Edlinger", "C:\Users\amade\OneDrive\Desktop\Dokumente\Amadeus\ProWiki\Backend\Articles\GEK530 Virtuelle Maschine installieren.md");
 
 INSERT INTO comments(author_id, comment, article_id) 
 VALUES(2, "Sehr Gut!", 1)

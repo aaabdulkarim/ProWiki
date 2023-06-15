@@ -25,7 +25,7 @@ render(() =>
         <Route path="/" component={App} />
         <Route path="/login" component={Login} />
         <Route path="/profile" component={Profile} />
-        <Route path="/article" component={Article} />
+        <Route path="/article/:id" component={Article} />
 
       </Routes>
   </Router>
