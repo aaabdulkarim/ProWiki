@@ -1,8 +1,7 @@
 import sqlite3
-conn = sqlite3.connect(r"\ProWiki\Backend\database.db", check_same_thread=False)
+conn = sqlite3.connect(r"C:\Users\amade\OneDrive\Desktop\Dokumente\Amadeus\ProWiki\Backend\database.db", check_same_thread=False)
 
-# cursor.fetchall() to get a return value
-with open(r"\ProWiki\Backend\schema.sql") as f:
+with open(r"C:\Users\amade\OneDrive\Desktop\Dokumente\Amadeus\ProWiki\Backend\create_script_prowiki.sql") as f:
     conn.executescript(f.read())
 
 cursor = conn.cursor()
@@ -10,5 +9,4 @@ cursor = conn.cursor()
 def execute_sql(statement):
     cursor.execute(statement)
     return cursor.fetchall()
-
 
