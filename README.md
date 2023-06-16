@@ -1,6 +1,8 @@
 # ProWiki
 Wiki welches sich in IT spezialisiert
+
 *Amadeus Abdulkarim*
+
 *16.06.2023*
 
 ## Installieren der Frontend Dependencies
@@ -20,9 +22,9 @@ Wiki welches sich in IT spezialisiert
 ## Einführung
 
 Diese Seite ist dafür gedacht als Wikipedia zu dienen, für Programmierer.
-Die Artikel werden auf dem 'Server' als Markdwon Dateien gespeichert deren Pfäde in einer Datenbank gespeichert. Das Projekt gilt als Übung zum Backend und benachteiligt daher das Frontend.
+Die Artikel werden auf dem 'Server' als Markdown Dateien gespeichert deren Pfäde in einer Datenbank gespeichert. Das Projekt gilt als Übung zum Backend und benachteiligt daher das Frontend.
 
-Das Backend besteht aus einer REST API und einem SQL Reader der die Datenbank liest Das Frontend liest die Daten von der Rest-API und stellt sie übersichtlich dar.
+Das Backend besteht aus einer REST API und einem SQL Reader der die Datenbank liest. Das Frontend liest die Daten von der Rest-API und stellt sie übersichtlich dar.
 
 ## Das Backend
 
