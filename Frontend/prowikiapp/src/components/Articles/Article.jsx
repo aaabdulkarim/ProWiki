@@ -18,7 +18,10 @@ function Article() {
         return response.json();
       })
       .then(apiData => {
+            console.log(apiData);
+            localStorage.setItem("title" , apiData.title)
             localStorage.setItem("text", apiData.text)
+            localStorage.setItem("author", apiData.author)
         })
       .catch(error => {
         console.error(error);
@@ -27,6 +30,8 @@ function Article() {
     return (
         <div>
             <main class="container">
+                <h2>{localStorage.getItem("title")}</h2>
+                Author: <pre>{localStorage.getItem("author")}</pre>
                 <article class="article">
                     <SolidMarkdown children={localStorage.getItem("text")} />
                 </article>

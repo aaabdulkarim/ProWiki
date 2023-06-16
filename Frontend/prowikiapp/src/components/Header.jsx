@@ -2,6 +2,7 @@ import "./Header.css"
 import user_icon from "/src/assets/user.svg"
 import sun from "/src/assets/theme-switch.svg"
 import logo from "/src/assets/favicon-32x.png"
+import plus_icon from "/src/assets/plus.svg"
 import { A } from "@solidjs/router";
 
 
@@ -14,15 +15,17 @@ function changeTheme() {
     } else{ htmlTag.setAttribute('data-theme', 'light');}
 }
 
-
-
+let inpValue = localStorage.getItem("currKeyword");
 
 
 function Header() {
-    const [articles, setArticles] = createStore(null);
 
-    function search() {
-
+    function handleSubmit(ele) {
+        if(event.keyCode == 13) {
+            console.log("Hallo");
+            localStorage.setItem("currKeyword", document.getElementById("searchbar").value) 
+            window.location.href = "../"   
+        }
     }
 
     return (
@@ -32,8 +35,10 @@ function Header() {
                 <nav>
                     <ul>
                         <li>
-                            <input onInput={console.log("NEIN")} type="search" placeholder="Suchen" />
+                            <input type="search" onKeyDown={handleSubmit} id="searchbar" value={inpValue} placeholder={"Suchen"} />
                         </li>
+                      
+
                     </ul>
                     <ul>
                         <li>
@@ -70,6 +75,13 @@ function Header() {
                         </div>
 
                         </li>
+                        
+
+                        <A href="/postarticle">
+                            <img src={plus_icon} alt="User" class="headersvg" />
+
+                        </A>
+
                         <A href="/profile">
                             <li data-tooltip="User" id="user" data-placement="right" style="border-bottom: none; cursor: pointer;">
                                 <img src={user_icon} alt="User" class="headersvg" />

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from pydantic import BaseModel
 import codecs
 from random import sample
 import uvicorn
@@ -17,13 +17,38 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+class Article(BaseModel):
+    title: str
+    author_id: int
+    text: str
+
+@app.post("/articles")
+def post_article(article: Article):
+
+    try:
+        # Write file
+        file_path = r"C:\Users\amade\OneDrive\Desktop\Dokumente\Amadeus\ProWiki\Backend\Articles" + "\\" + article.title + ".md"
+
+        
+
+        with open(file_path, "w") as f:
+            f.write(article.text) 
+
+        return execute_sql(f"""INSERT INTO articles(title, author_id, file_path)
+                         VALUES('{article.title}', {article.author_id}, '{file_path}')""")
+    
+    except Exception as e:
+        print(e)
+        return {"Error" : "Unable To Post Article"}
+
 
 @app.post('/login')
 def login(name : str, pw : str, email: str):
     try:
         return execute_sql(f"SELECT username FROM users WHERE ('{name}' = username OR '{email}' = email) AND '{pw}' = user_pw;")
     
-    except:
+    except Exception as e:
+        print(e)
         return {"Error" : "Could not login"}
 
 
@@ -32,7 +57,8 @@ def register(name : str, pw : str, email: str):
     try:
         return execute_sql(f"INSERT INTO users(username, user_pw, email) VALUES ('{name}', '{pw}', '{email}')")
     
-    except:
+    except Exception as e:
+        print(e)
         return {"Error" : "Could not register"}
 
 @app.get('/articles')
@@ -57,7 +83,8 @@ def article(keyword : str):
         
         return article_data
     
-    except:
+    except Exception as e:
+        print(e)
         return {"Error" : "No Articles Found"}
     
 
@@ -79,7 +106,8 @@ def get_article(id : int):
             "created_at" : article_data[0][3]
         }
 
-    except Exception:
+    except Exception as e:
+        print(e)
         return {"Error" : "Article Not Found/Available"}
 
 
@@ -88,7 +116,8 @@ def author(id : int):
     try:
         return execute_sql(f"SELECT username FROM users WHERE user_id = {id}")
     
-    except:
+    except Exception as e:
+        print(e)
         return {"Error" : "No Articles Found"}
 
 
@@ -98,7 +127,8 @@ def comments(article_id : int):
         comment_data = execute_sql(f"SELECT comment, author_id, created_at FROM comments WHERE article_id = {article_id}")
         return comment_data
     
-    except:
+    except Exception as e:
+        print(e)        
         return {"Error" : "No Comments Found"}
 
 
@@ -108,28 +138,9 @@ def comments(author_id : int, comment : str, article_id : int):
         execute_sql(f"INSERT INTO comments(author_id, comment, article_id) VALUES({author_id}, '{comment}', '{article_id}')")
         return {"Success" : "Successfully commented"}
     
-    except:
+    except Exception as e:
+        print(e)
         return {"Error" : "Unable To Comment"}
-
-
-@app.post("/articles")
-def post_article(title : str, author_id : int, text : str):
-
-    try:
-        # Write file
-        with open(r"C:\Users\amade\OneDrive\Desktop\Dokumente\Amadeus\ProWiki\Backend\Articles", "w") as f:
-            f.write(text)
-
-        file_path = r"C:\Users\amade\OneDrive\Desktop\Dokumente\Amadeus\ProWiki\Backend\Articles" + "\\" +title
-        
-        print(file_path)
-
-        # Add data to 
-        return execute_sql(f"""INSERT INTO articles(title, author_id, file_path)
-                         VALUES('{title}', {author_id}, '{file_path}')""")
-    except:
-        return {"Error" : "Unable To Post Article"}
-
 
 
 if __name__ == "__main__":

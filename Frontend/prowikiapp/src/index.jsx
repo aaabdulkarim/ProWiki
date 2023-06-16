@@ -8,6 +8,8 @@ import { Router, Routes, Route } from "@solidjs/router";
 import Profile from './components/Profile/Profile';
 import Article from './components/Articles/Article';
 import Header from './components/Header';
+import PostArticle from './components/Articles/Post/PostArticle';
+import { SearchContextProvider } from './context/SearchContext';
 
 const root = document.getElementById('root');
 
@@ -19,14 +21,17 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 
 render(() => 
   <Router> 
-      <Header></Header>
-      <Routes>
+      <SearchContextProvider>
+        <Header></Header>
+        <Routes>
 
-        <Route path="/" component={App} />
-        <Route path="/login" component={Login} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/article/:id" component={Article} />
+          <Route path="/" component={App} />
+          <Route path="/login" component={Login} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/article/:id" component={Article} />
+          <Route path="/postarticle" component={PostArticle} />
 
-      </Routes>
+        </Routes>
+      </SearchContextProvider>
   </Router>
 , root);

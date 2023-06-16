@@ -22,16 +22,14 @@ function getAuthor(id) {
         });
 
     return author;
-
 }
 
-function ArticleSearch() {
-
-
+function RandomArticle() {
     const [articles, setArticles] = createSignal(null);
-    let keyword = localStorage.getItem("currKeyword")
+
+  
     // Random Articles
-    fetch(`http://127.0.0.1:8000/articles/keyword/?keyword=${keyword}`)
+    fetch('http://127.0.0.1:8000/articles')
       .then(response => {
         if (!response.ok) {
           throw new Error('HTTP error ' + response.status);
@@ -45,15 +43,12 @@ function ArticleSearch() {
         console.error(error);
     });
 
-    
 
     return (
         <main class="container">
- 
             <h1>
-            Beiträge entsprechend deiner Suche gefunden:  {keyword}
+                Beiträge, die du dir ansehen könntest
             </h1>
-
             {/* For each geht durch jedes Article durch und platziert  */}
             <For each={articles()}>{(article) =>
 
@@ -61,9 +56,8 @@ function ArticleSearch() {
                     <A href={"/article/" + article[0]} >
 
                         <article>
-                            <h5>{article[2]} </h5>
-                            {console.log(articles())}
-                            Author : {getAuthor(article[1])}
+                            <h5>{article[1]} </h5>
+                            Author : {getAuthor(article[2])}
                             <pre>{article[3]}</pre>
                         </article>
                     </A>
@@ -72,11 +66,12 @@ function ArticleSearch() {
             }</For>
 
 
+
         </main>
     );
 }
 
-export default ArticleSearch;
+export default RandomArticle;
 
 
 

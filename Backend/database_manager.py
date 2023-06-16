@@ -20,6 +20,7 @@ folder_path = r"C:\Users\amade\OneDrive\Desktop\Dokumente\Amadeus\ProWiki\Backen
 for filename in os.listdir(folder_path):
     file_path = os.path.join(folder_path, filename)
 
+    
     if os.path.isfile(file_path):
         with codecs.open(file_path, "r", encoding="utf-8") as f:
             file_content = f.read()

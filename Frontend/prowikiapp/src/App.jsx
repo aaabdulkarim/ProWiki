@@ -1,12 +1,9 @@
-import Header from "./components/Header";
-import ArticleSearch from "./components/Articles/ArticleSearch"
-
+import HomePage from "./components/Articles/HomePage";
 
 function App() {
   return (
     <div class="App">
-      
-      <ArticleSearch />
+      <HomePage />
       
   
 
